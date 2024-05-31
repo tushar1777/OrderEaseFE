@@ -39,7 +39,7 @@ const LoginForm = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-        <Typography className="text-center" variant="h5">
+        <Typography className="text-center" variant="h5" aria-level="Login Page">
           Login
         </Typography>
         <Formik
@@ -48,7 +48,7 @@ const LoginForm = () => {
           onSubmit={handleSubmit}
         >
           <Form>
-            <Field
+            <Field aria-level="Email Address"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -59,7 +59,7 @@ const LoginForm = () => {
               autoComplete="email"
               helperText={<ErrorMessage name="email" />}
             />
-            <Field
+            <Field aria-level="Password"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -71,23 +71,23 @@ const LoginForm = () => {
               autoComplete="current-password"
               helperText={<ErrorMessage name="password" />}
             />
-            <Button
+            <Button 
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              sx={{ mt: 2,padding:"1rem" }}
+              sx={{ mt: 2,padding:"1rem" }} aria-level="Login Button"
             >
               Login
             </Button>
           </Form>
         </Formik>
-        <Typography variant="body2" align="center" sx={{ mt: 3 }}>
-          Don't have an account?{" "}
-          <Button onClick={() => navigate("/account/register")}>
-            Register
-          </Button>
-        </Typography>
+        <Typography variant="body2" align="center" sx={{ mt: 3 }} aria-level="Don't have an account?">
+            Don't have an account?{" "}
+              <Button onClick={() => navigate("/account/register")} aria-level="register Button">
+                   Register
+                </Button>
+            </Typography>
       </div>
     </Container>
   );
