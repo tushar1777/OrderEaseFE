@@ -50,7 +50,7 @@ const RegistrationForm = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-        <Typography className="text-center" variant="h5">
+        <Typography className="text-center" variant="h5" aria-level="Register Page">
           Register
         </Typography>
         <Formik
@@ -59,7 +59,7 @@ const RegistrationForm = () => {
           onSubmit={handleSubmit}
         >
           <Form>
-            <Field
+            <Field aria-level="Full Name"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -70,7 +70,7 @@ const RegistrationForm = () => {
               autoComplete="fullName"
               helperText={<ErrorMessage name="fullName" />}
             />
-            <Field
+            <Field aria-level="Email Address"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -81,7 +81,7 @@ const RegistrationForm = () => {
               autoComplete="email"
               helperText={<ErrorMessage name="email" />}
             />
-            <Field
+            <Field  aria-level="Password"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -103,8 +103,8 @@ const RegistrationForm = () => {
               // autoComplete="role"
               helperText={<ErrorMessage name="role" />}
             >
-              <MenuItem value="ROLE_CUSTOMER">Customer</MenuItem>
-              <MenuItem value="ROLE_RESTAURANT_OWNER">Restaurant Owner</MenuItem>
+              <MenuItem value="ROLE_CUSTOMER" aria-level="Register As Customer">Customer</MenuItem>
+              <MenuItem value="ROLE_RESTAURANT_OWNER" aria-level="Register As Owner">Restaurant Owner</MenuItem>
             </Field>
             <Button
               type="submit"
@@ -117,9 +117,9 @@ const RegistrationForm = () => {
             </Button>
           </Form>
         </Formik>
-        <Typography variant="body2" align="center" sx={{ mt: 3 }}>
+        <Typography variant="body2" align="center" sx={{ mt: 3 }} aria-level="Alredy have an ACCOUNT">
           Already have an account ?{" "}
-          <Button onClick={() => navigate("/account/login")}>Login</Button>
+          <Button onClick={() => navigate("/account/login")} aria-level="lOGIN bUTTON">Login</Button>
         </Typography>
       </div>
     </Container>
