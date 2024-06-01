@@ -50,7 +50,7 @@ const RegistrationForm = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-        <Typography className="text-center" variant="h5" aria-level="Register Page">
+        <Typography className="text-center" variant="h5" aria-level={1} aria-labelledby="Register Heading">
           Register
         </Typography>
         <Formik
@@ -59,7 +59,8 @@ const RegistrationForm = () => {
           onSubmit={handleSubmit}
         >
           <Form>
-            <Field aria-level="Full Name"
+            <Field aria-level={2}
+            aria-labelledby="Enter Full Name"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -70,7 +71,8 @@ const RegistrationForm = () => {
               autoComplete="fullName"
               helperText={<ErrorMessage name="fullName" />}
             />
-            <Field aria-level="Email Address"
+            <Field aria-level={3}
+            aria-labelledby="Enter Email Address"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -81,7 +83,8 @@ const RegistrationForm = () => {
               autoComplete="email"
               helperText={<ErrorMessage name="email" />}
             />
-            <Field  aria-level="Password"
+            <Field  aria-level={4}
+            aria-labelledby="Enter Password"
               as={TextField}
               variant="outlined"
               margin="normal"
@@ -103,10 +106,11 @@ const RegistrationForm = () => {
               // autoComplete="role"
               helperText={<ErrorMessage name="role" />}
             >
-              <MenuItem value="ROLE_CUSTOMER" aria-level="Register As Customer">Customer</MenuItem>
-              <MenuItem value="ROLE_RESTAURANT_OWNER" aria-level="Register As Owner">Restaurant Owner</MenuItem>
+              <MenuItem value="ROLE_CUSTOMER" aria-level={5} aria-labelledby="Register As Customer">Customer</MenuItem>
+              <MenuItem value="ROLE_RESTAURANT_OWNER" aria-level={6} aria-labelledby="Register As Owner">Restaurant Owner</MenuItem>
             </Field>
             <Button
+            aria-level={7} aria-labelledby="Submit Button"
               type="submit"
               fullWidth
               variant="contained"
@@ -117,9 +121,9 @@ const RegistrationForm = () => {
             </Button>
           </Form>
         </Formik>
-        <Typography variant="body2" align="center" sx={{ mt: 3 }} aria-level="Alredy have an ACCOUNT">
+        <Typography variant="body2" align="center" sx={{ mt: 3 }} aria-level={8} aria-labelledby="Alredy have an ACCOUNT">
           Already have an account ?{" "}
-          <Button onClick={() => navigate("/account/login")} aria-level="lOGIN bUTTON">Login</Button>
+          <Button onClick={() => navigate("/account/login")} aria-level={9} aria-labelledby="lOGIN bUTTON">Login</Button>
         </Typography>
       </div>
     </Container>
