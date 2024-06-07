@@ -10,13 +10,15 @@ import {
   Radio,
   RadioGroup,
   Typography,
+  Pagination,
+  Box,
 } from "@mui/material";
-import MenuItemCard from "../../components/MenuItem/MenuItemCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getRestaurantById, getRestaurantsCategory } from "../../../State/Customers/Restaurant/restaurant.action";
 import { getMenuItemsByRestaurantId } from "../../../State/Customers/Menu/menu.action";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import TodayIcon from '@mui/icons-material/Today';
+import LazyMenuItemCard from "../../components/MenuItem/LazyMenuItemCard";
 
 const categories = [
   "Thali",
@@ -48,6 +50,9 @@ const Restaurant = () => {
   const foodCategory = searchParams.get("food_category");
   const jwt=localStorage.getItem("jwt")
 
+  const [page, setPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(5); // Adjust items per page as needed
+
   useEffect(() => {
     dispatch(
       getRestaurantById({
@@ -62,11 +67,13 @@ const Restaurant = () => {
         seasonal: foodType==="seasonal",
         vegetarian: foodType==="vegetarian",
         nonveg: foodType==="non_vegetarian",
-        foodCategory: foodCategory || ""
+        foodCategory: foodCategory || "",
+        page,
+        itemsPerPage,
       })
     );
     dispatch(getRestaurantsCategory({restaurantId:id,jwt}))
-  }, [id,foodType,foodCategory]);
+  }, [id, foodType, foodCategory, page, itemsPerPage]);
 
   const handleFilter = (e, value) => {
     const searchParams = new URLSearchParams(location.search);
@@ -79,6 +86,10 @@ const Restaurant = () => {
 
     const query = searchParams.toString();
     navigate({ search: `?${query}` });
+  };
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
   };
 
   return (
@@ -189,21 +200,26 @@ const Restaurant = () => {
         </div>
         <div className="lg:w-[80%] space-y-5 lg:pl-10">
           {menu?.menuItems.map((item) => (
-            <MenuItemCard item={item} />
-            // <p>ashok</p>
+            <LazyMenuItemCard key={item.id} item={item} />
           ))}
+          <Box display="flex" justifyContent="center" mt={2}>
+            <Pagination
+              count={Math.ceil(menu.totalItems / itemsPerPage)}
+              page={page}
+              onChange={handlePageChange}
+              color="primary"
+            />
+          </Box>
         </div>
       </section>
     </div>
     <Backdrop
-  sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-  open={menu.loading || restaurant.loading}
-  
->
-  <CircularProgress color="inherit" />
-</Backdrop>
+      sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={menu.loading || restaurant.loading}
+    >
+      <CircularProgress sx={{ color: "orange" }} />
+    </Backdrop>
     </>
-    
   );
 };
 
