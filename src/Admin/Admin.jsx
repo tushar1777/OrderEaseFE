@@ -57,7 +57,7 @@ const Admin = () => {
           <AdminSidebar handleClose={handleCloseSideBar} open={openSideBar} />
         </div>
 
-        <div className="lg:w-[80vw]">
+        <div className="lg:w-[100vw]">
           <Routes>
             <Route path="/" element={<RestaurantDashboard />} />
             <Route path="/orders" element={<RestaurantsOrder />} />
