@@ -20,21 +20,19 @@ const AdminNavbar = ({handleOpenSideBar}) => {
 
 
   return (
-    <div className="lg:hidden px-5 z-50 py-[.8rem] bg-[#FC8019]  lg:px-20 flex justify-between">
-      <div className="flex items-center space-x-4">
+    <div className=" px-5 z-50 py-[.10rem] bg-[#FC8019]  lg:px-10 flex justify-between">
+      <div className="flex items-center space-x-8">
         <div
-          className="lg:mr-10 cursor-pointer flex items-center space-x-4"
+          className="lg:mr-20 cursor-pointer flex items-center space-x-8"
         >
-          <IconButton onClick={handleOpenSideBar}><MenuIcon/></IconButton>
-          <li className="logo font-semibold text-gray-300 text-2xl">
+          <IconButton onClick={handleOpenSideBar} sx={{ width: '48px', height: '48px' }}><MenuIcon/></IconButton>
+          <li className="logo font-bold text-white-500 text-2xl">
             OrderEase
           </li>
         </div>
         {/* <li className="font font-semibold">Home</li> */}
       </div>
-      
-
-    </div>
+     </div>
   );
 };
 

@@ -54,11 +54,11 @@ export default function AdminSidebar({ handleClose, open }) {
           anchor={"left"}
           open={open}
           onClose={handleClose}
-          variant={isSmallScreen ? "temporary" : "permanent"}
-          // variant="persistent"
+          // variant={isSmallScreen ? "temporary" : "permanent"}
+          variant="persistent"
         >
-          <div className="w-[70vw] lg:w-[20vw] group h-[100vh] flex flex-col justify-center text-xl space-y-[1.65rem]">
-            
+          <div className="w-[80vw] lg:w-[15vw] group h-[70vh] flex flex-col justify-center text-xl space-y-[1.65rem] ">
+          <div className="mt-4 mb-2 text-2xl text-center">Order Ease</div>
             {menu.map((item, i) => (
               <>
                 <div
