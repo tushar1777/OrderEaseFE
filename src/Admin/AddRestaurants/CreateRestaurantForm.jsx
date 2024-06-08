@@ -24,6 +24,8 @@ const initialValues = {
   instagram: "",
   openingHours: "Mon-Sun: 9:00 AM - 9:00 PM",
   images: [],
+  facebook: "",
+  whatsapp: ""
 };
 
 const CreateRestaurantForm = () => {
